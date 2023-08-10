@@ -1,0 +1,9 @@
+.modalBox {
+  background-color: white;
+  max-width: 800px;
+  .buttonsContainer {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+  }
+}
