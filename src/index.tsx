@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
+import { UserContextProvider } from "./context/UserContext"
 import "./index.css"
 import reportWebVitals from "./reportWebVitals"
 import Router from "./Routing/Router/Router"
@@ -7,7 +8,9 @@ import Router from "./Routing/Router/Router"
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <React.StrictMode>
-    <Router />
+    <UserContextProvider>
+      <Router />
+    </UserContextProvider>
   </React.StrictMode>
 )
 

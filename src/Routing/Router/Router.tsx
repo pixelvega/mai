@@ -1,32 +1,45 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
+import Layout from "../../layouts/Layout/Layout"
+import Login from "../../views/Login/Login"
 import PlantMessage from "../../views/PlantMessage/PlantMessage"
 import Start from "../../views/Start/Start"
 
 const router = createBrowserRouter([
   {
     path: "/login",
-    element: <div>Login :D</div>,
+    element: <Login />,
   },
   {
     path: "/",
     element: (
-      <div>
-        Hello world!<br></br>Let's start!
-        <Start />
-      </div>
+      <Layout>
+        <Outlet />
+      </Layout>
     ),
-  },
-  {
-    path: "/send-message",
-    element: <PlantMessage />,
-  },
-  {
-    path: "/list-of-messages",
-    element: <div>{"Your list of messages :)"}</div>,
-  },
-  {
-    path: "/detail/:messageId",
-    element: <div>Message detail</div>,
+    children: [
+      {
+        path: "",
+
+        element: (
+          <div>
+            Hello world!<br></br>Let's start!
+            <Start />
+          </div>
+        ),
+      },
+      {
+        path: "send-message",
+        element: <PlantMessage />,
+      },
+      {
+        path: "list-of-messages",
+        element: <div>{"Your list of messages :)"}</div>,
+      },
+      {
+        path: "detail/:messageId",
+        element: <div>Message detail</div>,
+      },
+    ],
   },
 ])
 
